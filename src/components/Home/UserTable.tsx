@@ -15,7 +15,7 @@ const UserTable: React.FC<{ curdList: Curd[], onRemoveCurdItem: (id:number) => v
         </tr>
       </thead>
       <tbody>
-        {props.curdList.map((item) => (
+        {props.curdList.length>0 ?(props.curdList.map((item) => (
           <UserItems
             key={item.id}
             nameProp={item.name}
@@ -23,7 +23,11 @@ const UserTable: React.FC<{ curdList: Curd[], onRemoveCurdItem: (id:number) => v
             emailProp={item.email}
             onRemoveCurdItem={props.onRemoveCurdItem.bind(null, item.id)}
           />
-        ))}
+        ))):(
+            <tr>
+                <td colSpan={4}><h3>No Users</h3></td>
+            </tr>
+        )}
       </tbody>
     </table>
   );
