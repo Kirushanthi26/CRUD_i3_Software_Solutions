@@ -24,7 +24,7 @@ const DetailsForm:React.FC<{onAddUserDetailsList:(userDetail:Curd)=>void}> = (pr
         e.preventDefault()
         props.onAddUserDetailsList(userDetails)
 
-        userDetails.tel=+'';
+       
     }
 
   return (
@@ -35,7 +35,7 @@ const DetailsForm:React.FC<{onAddUserDetailsList:(userDetail:Curd)=>void}> = (pr
       </div>
       <div className={style.control}>
         <label htmlFor="tel">Telephone</label>
-        <input type="number" name="tel" id="tel" onChange={userDetailsHandler} value={userDetails.tel}/>
+        <input type="number" name="tel" id="tel" onChange={userDetailsHandler} />
       </div>
       <div className={style.control}>
         <label htmlFor="email">Email</label>
