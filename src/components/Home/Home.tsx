@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 // import style from "./Home.module.css";
 import DetailsForm from "./DetailsForm";
 import UserTable from "./UserTable";
@@ -20,10 +20,18 @@ const Home: React.FC = (props) => {
     },
   ];
 
+  const [userDetailsList, setuserDetailsList] = useState<Curd[]>(curdDetails)
+
+  const addUserDetailsListHandler = (userDetail:Curd) => {
+    setuserDetailsList((prev)=>{
+      return [...prev, userDetail]
+    })
+  }
+
   return (
     <Fragment>
-      <DetailsForm />
-      <UserTable curdList={curdDetails}/>
+      <DetailsForm onAddUserDetailsList={addUserDetailsListHandler}/>
+      <UserTable curdList={userDetailsList}/>
     </Fragment>
   );
 };
