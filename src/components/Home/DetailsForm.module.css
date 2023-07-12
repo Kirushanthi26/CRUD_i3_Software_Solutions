@@ -1,4 +1,4 @@
-.login {
+.curd {
     width: 90%;
     max-width: 40rem;
     margin: 2rem auto;
@@ -44,8 +44,8 @@
   /* .control.invalid input {
     border-color: red;
     background: #fbdada;
-  }
-   */
+  } */
+  
   .actions {
     text-align: center;
   }
