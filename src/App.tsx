@@ -8,21 +8,21 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   const loginHandler = (username:string, password:string|number) => {
-
+    
     console.log(username, password)
     setIsLoggedIn(true);
   };
 
-  // const logoutHandler = () => {
-  //   setIsLoggedIn(false);
-  // };
+   const logoutHandler = () => {
+     setIsLoggedIn(false);
+   };
 
   return (
     <Fragment>
-      <MainHeader />
+      <MainHeader isAuthenticated={isLoggedIn}/>
       <main>
         {!isLoggedIn && <Login onLogin={loginHandler}/>}
-        {isLoggedIn && <Home/>}
+        {isLoggedIn && <Home />}
       </main>
     </Fragment>
   );
