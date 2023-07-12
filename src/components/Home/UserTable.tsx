@@ -3,7 +3,7 @@ import style from "./UserTable.module.css";
 import { Curd } from "../../data_models/Crud.model";
 import UserItems from "./UserItems";
 
-const UserTable: React.FC<{ curdList: Curd[] }> = (props) => {
+const UserTable: React.FC<{ curdList: Curd[], onRemoveCurdItem: (id:number) => void }> = (props) => {
   return (
     <table className={style.tablestyle}>
       <thead>
@@ -21,6 +21,7 @@ const UserTable: React.FC<{ curdList: Curd[] }> = (props) => {
             nameProp={item.name}
             telProp={item.tel}
             emailProp={item.email}
+            onRemoveCurdItem={props.onRemoveCurdItem.bind(null, item.id)}
           />
         ))}
       </tbody>

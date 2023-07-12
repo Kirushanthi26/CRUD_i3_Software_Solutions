@@ -1,8 +1,8 @@
 import React from "react";
 
-const UserItems:React.FC<{nameProp:string, telProp:number, emailProp:string}> = (props) => {
+const UserItems:React.FC<{nameProp:string, telProp:number, emailProp:string, onRemoveCurdItem: () => void}> = (props) => {
   return (
-    <tr>
+    <tr onClick={props.onRemoveCurdItem}>
       <td>{props.nameProp}</td>
       <td>{props.telProp}</td>
       <td>{props.emailProp}</td>

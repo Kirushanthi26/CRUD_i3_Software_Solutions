@@ -28,10 +28,16 @@ const Home: React.FC = (props) => {
     })
   }
 
+  const onRemoveCurdItemHandler = (curdUserId: number) => {
+    setuserDetailsList((prevs)=>{
+      return prevs.filter(curdUser => curdUser.id !== curdUserId)
+    })
+  }
+
   return (
     <Fragment>
       <DetailsForm onAddUserDetailsList={addUserDetailsListHandler}/>
-      <UserTable curdList={userDetailsList}/>
+      <UserTable curdList={userDetailsList}  onRemoveCurdItem={onRemoveCurdItemHandler}/>
     </Fragment>
   );
 };
