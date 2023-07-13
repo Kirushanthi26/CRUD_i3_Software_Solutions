@@ -34,6 +34,8 @@ const Home: React.FC = (props) => {
     })
   }
 
+  
+
   return (
     <Fragment>
       <DetailsForm onAddUserDetailsList={addUserDetailsListHandler}/>
