@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from "react";
-// import style from "./Home.module.css";
 import DetailsForm from "./DetailsForm";
 import UserTable from "./UserTable";
 import { Curd } from "../../data_models/Crud.model";
