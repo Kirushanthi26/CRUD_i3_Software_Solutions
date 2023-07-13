@@ -34,7 +34,7 @@ const Home: React.FC = (props) => {
     })
   }
 
-  
+  console.log("hello dev")
 
   return (
     <Fragment>
