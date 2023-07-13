@@ -26,7 +26,7 @@ const DetailsForm:React.FC<{onAddUserDetailsList:(userDetail:Curd)=>void}> = (pr
         e.preventDefault()
         props.onAddUserDetailsList(userDetails)
 
-       console.log(userDetails)
+      //  console.log(userDetails)
 
         setUserDetails({        
             id:+'',

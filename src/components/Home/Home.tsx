@@ -3,6 +3,7 @@ import React, { Fragment, useState } from "react";
 import DetailsForm from "./DetailsForm";
 import UserTable from "./UserTable";
 import { Curd } from "../../data_models/Crud.model";
+import EditForm from "./EditForm";
 
 const Home: React.FC = (props) => {
   const curdDetails: Curd[] = [
@@ -34,12 +35,41 @@ const Home: React.FC = (props) => {
     })
   }
 
-  console.log("hello dev")
+  //editing 
+  const [isEditting, setIsEdtting] = useState<boolean>(false)
+
+  const [currentUser, setCurrentUser] = useState<Curd>({
+    id:+'',
+    name:'',
+    tel: parseInt(''),
+    email:''
+})
+
+  const editRow = (editUserDetails:Curd) => {
+    setIsEdtting(true)
+
+    // console.log(editUserDetails.id)
+
+    setCurrentUser({
+      id:editUserDetails.id,
+      name:editUserDetails.name,
+      tel:editUserDetails.tel,
+      email:editUserDetails.email
+    })
+
+    // console.log(currentUser)
+  }
+
+  const updateUser = (updateUser:Curd) => {
+    setIsEdtting(false)
+    setuserDetailsList(userDetailsList.map((user)=>(user.id === updateUser.id ? updateUser:user)))
+  }
 
   return (
     <Fragment>
-      <DetailsForm onAddUserDetailsList={addUserDetailsListHandler}/>
-      <UserTable curdList={userDetailsList}  onRemoveCurdItem={onRemoveCurdItemHandler}/>
+      {!isEditting &&<DetailsForm onAddUserDetailsList={addUserDetailsListHandler}/>}
+      {isEditting && <EditForm currentUser={currentUser} updateUser={updateUser} setIsEdtting={setIsEdtting}/>}
+      <UserTable curdList={userDetailsList}  onRemoveCurdItem={onRemoveCurdItemHandler} onEditRow={editRow}/>
     </Fragment>
   );
 };

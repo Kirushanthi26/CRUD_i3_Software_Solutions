@@ -3,7 +3,11 @@ import style from "./UserTable.module.css";
 import { Curd } from "../../data_models/Crud.model";
 import UserItems from "./UserItems";
 
-const UserTable: React.FC<{ curdList: Curd[], onRemoveCurdItem: (id:number) => void }> = (props) => {
+const UserTable: React.FC<{
+  curdList: Curd[];
+  onRemoveCurdItem: (id: number) => void;
+  onEditRow: (editUserDetail:Curd) => void;
+}> = (props) => {
   return (
     <table className={style.tablestyle}>
       <thead>
@@ -15,18 +19,23 @@ const UserTable: React.FC<{ curdList: Curd[], onRemoveCurdItem: (id:number) => v
         </tr>
       </thead>
       <tbody>
-        {props.curdList.length>0 ?(props.curdList.map((item) => (
-          <UserItems
-            key={item.id}
-            nameProp={item.name}
-            telProp={item.tel}
-            emailProp={item.email}
-            onRemoveCurdItem={props.onRemoveCurdItem.bind(null, item.id)}
-          />
-        ))):(
-            <tr>
-                <td colSpan={4}><h3>No Users</h3></td>
-            </tr>
+        {props.curdList.length > 0 ? (
+          props.curdList.map((item) => (
+            <UserItems
+              key={item.id}
+              nameProp={item.name}
+              telProp={item.tel}
+              emailProp={item.email}
+              onRemoveCurdItem={props.onRemoveCurdItem.bind(null, item.id)}
+              onEditRow={props.onEditRow.bind(null, item)}
+            />
+          ))
+        ) : (
+          <tr>
+            <td colSpan={4}>
+              <h3>No Users</h3>
+            </td>
+          </tr>
         )}
       </tbody>
     </table>
